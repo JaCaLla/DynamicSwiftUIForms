@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = DynamicFormViewModel(persons: [
+        .adult(Adult(name: "Juan", surename: "Pérez", email: "juan.perez@example.com")),
+        .child(Child(name: "Carlos", surename: "Gomez", birthdate: Date(timeIntervalSince1970: 1452596356))),
+        .adult(Adult(name: "Ana", surename: "Lopez", email: "ana.lopez@example.com"))
+    ])
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        DynamicFormView(viewModel: viewModel)
     }
 }
 
